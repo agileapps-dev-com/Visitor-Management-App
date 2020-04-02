@@ -9,4 +9,4 @@ This is a starter CUI template for AgileApps platform. It contains the AgileApps
 ## Usage instructions
 
 ## Disclaimer
-Refer to the [licence](LICENSE.md) terms and conditions.
+Refer to the [licence](LICENSE) terms and conditions.
