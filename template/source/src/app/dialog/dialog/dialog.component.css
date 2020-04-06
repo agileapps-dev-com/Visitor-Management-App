@@ -1,0 +1,102 @@
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #997bb4;
+    display: flex;
+}
+
+.title-container {
+    display: flex;
+    width: 85%;
+}
+
+.right-container {
+    display: flex;
+    width: 15%;
+    justify-content: flex-end;
+}
+
+.secondary-action {
+    background-color: white;
+    border: 1px solid #997bb4;
+    color: #997bb4;
+    width: 96px;
+    margin-left: 8px;
+}
+
+.primary-action {
+    background-color: #997bb4;
+    color: #FFF;
+    width: 96px;
+    margin-left: 8px;
+}
+
+.secondary-action:hover {
+    color: #0899cc;
+}
+
+.secondary-action:focus {
+    background-color: #fff;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    border: 1px solid #997bb4 !important;
+}
+
+:host ::ng-deep h3 {
+    color: #997bb4
+}
+
+:host ::ng-deep .ace-theme .ace-btn {
+    background-color: #997bb4;
+    color: #FFF
+}
+
+:host ::ng-deep .ace-theme .ace-field-input:focus, .cdk-overlay-container .ace-field-input:focus {
+    border: 1px solid #997bb4
+}
+
+
+:host ::ng-deep .ace-theme .mat-tab-group .mat-tab-header .mat-tab-label-container .mat-tab-labels .mat-tab-label-active .mat-tab-label-content>span:not(.sr-only) {
+    color: #997bb4;
+    border-radius: 10px 10px 0 0;
+    border: 0px;
+}
+:host ::ng-deep .ace-theme .mat-tab-group .mat-tab-header .mat-tab-label-container .mat-tab-labels .mat-tab-label .mat-tab-label-content {
+    border-color: #997bb4!important;
+    background-color: #997bb4!important;
+}
+
+:host ::ng-deep .cdk-overlay-container .cdk-global-overlay-wrapper .cdk-overlay-pane .mat-radio-checked .mat-radio-label .mat-radio-container .mat-radio-outer-circle {
+    background: #997bb4 !important;
+}
+
+:host ::ng-deep .ace-theme .mat-tab-group:not(.hide-mat-tab-header) .mat-tab-header .mat-tab-label-container .mat-tab-labels .mat-tab-label.mat-tab-label-active .mat-tab-label-content, .cdk-overlay-container .mat-tab-group:not(.hide-mat-tab-header) .mat-tab-header .mat-tab-label-container .mat-tab-labels .mat-tab-label.mat-tab-label-active .mat-tab-label-content{
+    background-color: #FFF!important;
+    color: #997bb4;
+    border: 1px solid #997bb4;
+    border-radius: 10px 10px 0 0;
+}
+.action-button {
+    color: #997bb4;
+}
+
+:host ::ng-deep .cdk-overlay-pane .mat-menu-panel .mat-menu-content ace-record-actions ace-base-wrapper .ace-theme ul.actions-list {
+    margin-bottom: 0px !important;
+}
+
+:host ::ng-deep .cdk-overlay-container .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane{
+    padding: 0px;
+    border: 1px solid #997bb4 !important;
+    border-radius: 4px !important;
+}
+
+:host ::ng-deep .ace-theme .cdk-overlay-pane .mat-menu-panel .mat-menu-content .actions-list .mat-menu-item {
+    border-bottom: 1px solid #997bb4;
+}
+:host ::ng-deep .cdk-overlay-pane mat-dialog-container ace-login-form .login-error{
+    color: red;
+}
+:host ::ng-deep .actions-class{
+    font-size: 14px;
+}

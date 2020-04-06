@@ -1,0 +1,48 @@
+<div class="title" *ngIf="data['displayTitle']">
+    <div class="title-container">
+        <span>{{data['title']}}</span>
+
+    </div>
+    <div class="right-container">
+        <ng-conatiner *ngIf="data['title']=== 'Manage meeting'">
+            <button mat-icon-button class="action-button" (click)="getPrint()">
+                <mat-icon class="material-icons">print</mat-icon>
+            </button>
+
+        </ng-conatiner>
+    </div>
+    <ng-container *ngIf="meetingRecordId && meetingRecordId!== '' && meetingRecordId!== '-1'">
+        <ace-record-actions [objectId]="'663cf612431049dbb9ba4ecd46dd32f1'" [recordId]="meetingRecordId"
+            [types]="'MACRO'" (executedaction)="whenActionIsPerformed($event)" [cssClasslist]="'actions-class'">
+        </ace-record-actions>
+    </ng-container>
+</div>
+<div mat-dialog-content class="dialog-content">
+
+    <ng-container *ngIf="data['type']=== 'login-form'">
+        <ace-login-form (loginSuccess)="loginSuccessHandler($event)" (loginError)="loginFailureHandler($event)">
+        </ace-login-form>
+    </ng-container>
+    <ng-container *ngIf="data['title']=== 'Add Employee'">
+        <ace-record-form #employee [objectId]="'d833a62f32da4fbd92ec1a028da54b91'" [recordId]="'-1'">
+        </ace-record-form>
+    </ng-container>
+    <ng-container *ngIf="data['title']=== 'Schedule Meeting'">
+        <ace-record-form #meeting [objectId]="'663cf612431049dbb9ba4ecd46dd32f1'" [recordId]="'-1'">
+        </ace-record-form>
+    </ng-container>
+    <ng-container *ngIf="data['title']=== 'Add Meeting Type'">
+        <ace-record-form #meeting [objectId]="'17cdf6290e724168a04ff525fc86661e'" [recordId]="'-1'">
+        </ace-record-form>
+    </ng-container>
+    <ng-container *ngIf="data['title']=== 'Manage meeting' && data['recordId']">
+        <ace-record-form [objectId]="'663cf612431049dbb9ba4ecd46dd32f1'" field-display-mode="view"
+            [recordId]="data['recordId'] ? data['recordId'] : '-1'" layout-id="eb816983b0814940a9500035093d51fe">
+        </ace-record-form>
+    </ng-container>
+</div>
+<mat-divider class="divider-content"></mat-divider>
+<div mat-dialog-actions *ngIf="data['displayFooter']">
+    <button class="btn secondary-action" (click)="closeDialog({})">Close</button>
+    <button class="btn primary-action" (click)="saveRecord(meeting)">Save</button>
+</div>

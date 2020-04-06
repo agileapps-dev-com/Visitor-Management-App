@@ -1,0 +1,429 @@
+<div class="modal fade" id="myModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Please Login</h2>
+                <ace-login-form #login></ace-login-form>
+            </div>
+            <div class="actions">
+
+                <div class="modal-footer actions-container">
+                    <button type="button" class="btn disagree-layout" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==========================
+    Header
+  ============================-->
+<header id="header">
+    <div class="container-fluid" #top>
+
+        <div id="logo" class="pull-left logo-margin">
+            <!-- <h1><a href="#intro" class="scrollto">Title</a></h1> -->
+            <img src="assets/img/logo.png" width="52px" height="52px" alt="" class="img-fluid">
+
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu header-text" *ngIf="!isUserLoginSuccess">
+                <li *ngIf="!isUserLoginSuccess" [ngClass]="isAboutYou? 'menu-active':''"
+                    (click)="scroll(about, 'about')"><a>About</a></li>
+                <li *ngIf="!isUserLoginSuccess" [ngClass]="isContact ? 'menu-active':''"
+                    (click)="scroll(contact, 'contact')"><a>Contact</a></li>
+                <ng-container *ngIf="!isUserLoginSuccess; else userIcon">
+                    <li class="login-menu" (click)="userLogin()">
+                        <a>Login</a>
+                    </li>
+                </ng-container>
+                <ng-template #userIcon>
+                    <li class="login-menu">
+                    </li>
+                </ng-template>
+            </ul>
+            <div *ngIf="isUserLoginSuccess" style="padding: 0 16px;">
+                <mat-button [matMenuTriggerFor]="menu">
+                    <ace-user-profile hide-role="true"></ace-user-profile>
+                </mat-button>
+                <div class="logout-container" mat-tooltip="logout">
+                    <ace-logout #logout id="acelogoutThread-ex-3" (logoutEvent)="userLogout($event)">
+                        <button mat-icon-button class="logout-button">
+                            <mat-icon class="material-icons">power_settings_new</mat-icon>
+                        </button>
+                    </ace-logout>
+                </div>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openProfile()">Profile</button>
+                </mat-menu>
+            </div>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+<section id="intro">
+    <ng-container *ngIf="!isUserLoginSuccess">
+
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#introCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#introCarousel" data-slide-to="1" class=""></li>
+                    <li data-target="#introCarousel" data-slide-to="2" class=""></li>
+                    <li data-target="#introCarousel" data-slide-to="3" class=""></li>
+                    <li data-target="#introCarousel" data-slide-to="4" class=""></li>
+                </ol>
+                <!-- <ol class="carousel-indicators"></ol> -->
+
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="carousel-item active">
+                        <div class="carousel-background"><img src="assets/img/intro-carousel/6.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="assets/img/intro-carousel/2.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="assets/img/intro-carousel/3.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="assets/img/intro-carousel/4.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="assets/img/intro-carousel/5.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+
+        </div>
+    </ng-container>
+
+</section>
+<main id="main" [ngClass]="!isUserLoginSuccess? 'visible': 'hidden'">
+
+    <section #about>
+        <ng-conatiner *ngIf="isAboutYou">
+            <div class="container">
+
+                <header class="section-header">
+                    <h3>About</h3>
+                    <p>Unique of its kind and manages all the entries with just a single Application. In this technology
+                        era we are providing the best tool for managing records for Employees, Visitors with some
+                        special features like Assets tracker, Trainees Module and Courier reception which can help in
+                        saving papers and make your organisation grow according to the changing future whereas Admin
+                        Panel helps you in maintaining records.</p>
+                </header>
+
+                <div class="row about-cols">
+
+                    <div class="col-md-4 wow fadeInUp">
+                        <div class="about-col">
+                            <div class="img">
+                                <img src="assets/img/about-mission.jpg" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">Our Mission</a></h2>
+                            <ul>
+                                <li>Visitor and Employee Track</li>
+                                <li>User friendly interface</li>
+                                <li>Easy on your pocket.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="about-col">
+                            <div class="img">
+                                <img src="assets/img/about-plan.jpg" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">Our Plan</a></h2>
+                            <ul>
+                                <li>Admin panel to view daily entries</li>
+                                <li>Timely updates and support</li>
+                                <li>Email update</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="about-col">
+                            <div class="img">
+                                <img src="assets/img/about-vision.jpg" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">Our Vision</a></h2>
+                            <p>webMethods AgileApps Cloud is a Business Process Management (BPM) and application
+                                Platform-as-a-Service (aPaaS) that allows the subject matter experts, as well as
+                                developers, to visually build and deploy process-driven, application solutions. The
+                                AgileApps platform empowers business to have a better way to track and manage service
+                                requests, respond to incidents and resolve investigations.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </ng-conatiner>
+    </section>
+
+    <section #contact class="section-bg wow fadeInUp">
+        <ng-container *ngIf="isContact">
+
+            <div class="container">
+
+                <div class="section-header">
+                    <h3>Contact Us</h3>
+                </div>
+
+                <div class="row contact-info">
+
+                    <div class="col-md-4">
+                        <div class="contact-address">
+                            <mat-icon class="material-icons">room</mat-icon>
+                            <!-- <i class="ion-ios-location-outline"></i> -->
+                            <h3>Address</h3>
+                            <address>Software AG,
+                                Uhlandstraße 12,
+                                64297 Darmstadt,
+                                Germany</address>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-phone">
+                            <mat-icon class="material-icons">phone</mat-icon>
+                            <h3>Phone Number</h3>
+                            <p><a href="tel:+496151920">+496151920</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-email">
+                            <mat-icon class="material-icons">email</mat-icon>
+
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@example.com">info@example.com</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form bg-white">
+                    <div class="sr-only">
+                        <ace-record-form #reviewForm css-classlist="bg-transparant message-form border-0 p-0"
+                            record-id="-1" object-id="d98579c0ce254dfc905b5dccf033437c"
+                            layout-id="b7a871c901344c9ba287f3686df9215a">
+                        </ace-record-form>
+                    </div>
+                    <ace-record-form #contactForm css-classlist="bg-transparant contact-form border-0 p-0"
+                        record-id="-1" object-id="d98579c0ce254dfc905b5dccf033437c"
+                        layout-id="a31f6947945e4ecb831f2e1a4b0e53b4">
+                    </ace-record-form>
+                    <ace-record-form #messageForm css-classlist="bg-transparant message-form border-0 p-0"
+                        record-id="-1" object-id="d98579c0ce254dfc905b5dccf033437c"
+                        layout-id="0e70f595b63c44939f15e3324ab682d1">
+                    </ace-record-form>
+                    <div class="text-center"><button class="btn primary-action" (click)="saveContactForm()">Send
+                            Information</button></div>
+                </div>
+
+            </div>
+        </ng-container>
+
+    </section>
+
+</main>
+<ng-conatainer *ngIf="!isUserLoginSuccess && showToaster">
+    <div class="toaster-container contact-toaster">
+        <div class="alert alert-success alert-dismissible fade show toaster-content wow fadeInUp" role="alert">
+            <strong>{{(toasterData && toasterData.title) ? toasterData.title : ''}}</strong>
+            {{(toasterData && toasterData.message)? toasterData.message:''}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</ng-conatainer>
+<div class="home-container" *ngIf="isUserLoginSuccess" [ngClass]="isUserLoginSuccess? 'visible': 'hidden'">
+    <div class="toaster-container" *ngIf="showToaster">
+        <div class="alert alert-success alert-dismissible fade show toaster-content wow fadeInDown" role="alert">
+            <strong>{{toasterData.title ? toasterData.title : ''}}</strong> {{toasterData.message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                (click)="resetTheToaster(showToaster)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="col-3">
+            <div (click)="tabInfo(tabsList)">
+                <ace-app-tabs-list #tabsList css-classlist='wow fadeInLeft dotted-border'>
+                </ace-app-tabs-list>
+            </div>
+        </div>
+        <div class="col-9">
+            <ng-conatiner *ngIf="isMeeting">
+
+                <div class="wow fadeInRight">
+                    <div class="object-title">
+                        <span>Meetings</span>
+                    </div>
+                    <div class="flex-css">
+                        <div class="content-container views-container">
+                            <div class="card" [ngClass]="todayView?'view-active':null"
+                                (click)="viewRecords('3abd133ab3d74aedbc4713c664de4a47', 'today')">
+                                <div class="card-body">
+                                    Today
+                                </div>
+                            </div>
+                            <div class="card" [ngClass]="tomorrowView?'view-active':null"
+                                (click)="viewRecords('18fe868e6c44404db0d14ffdf0cb3edb', 'tomorrow')">
+                                <div class="card-body">
+                                    Tomorrow
+                                </div>
+                            </div>
+                            <div class="card" [ngClass]="allView?'view-active':null"
+                                (click)="viewRecords('7c134d718eba4d5f8b4cdd3177095112', 'upcoming')">
+                                <div class="card-body">
+                                    Upcoming
+                                </div>
+                            </div>
+                            <div class="card" [ngClass]="lastSevenDaysView?'view-active':null"
+                                (click)="viewRecords('1d1d1bc55e614fc8a0383a49fe07a929', 'lastSeven')">
+                                <div class="card-body">
+                                    Last Seven Days
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-meeting" *ngIf="canAddMeeting">
+                            <button mat-icon-button (click)="addEmployee('Schedule Meeting','meeting')"
+                                class="container-button-color">
+                                <mat-icon class="material-icons">add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div #meetingsView>
+                        <ace-records-table-view [objectId]="meetingObjectId" [sorting]="'true'"
+                            [sortBy]="'date_modified'" [sortOrder]="'desc'" [viewId]="viewId" [selectionColumnTitle]="'Purpose'"
+                            (selectrecord)="onMeetingSelection($event)">
+                        </ace-records-table-view>
+                    </div>
+                </div>
+            </ng-conatiner>
+            <ng-conatiner *ngIf="isVisitor">
+                <div class="wow fadeInRight">
+                    <!-- <div class="object-title">
+                        <span>Visitors</span>
+                    </div>
+                    <div aria-labelledby="v-pills-profile-tab">
+                        <ace-record-form [objectId]="'f69b030f855046a4b498024c2d2ff7ed'" [recordId]="userId">
+                        </ace-record-form>
+                    </div> -->
+                </div>
+            </ng-conatiner>
+            <ng-conatiner *ngIf="isMeetingType">
+                <div class="wow fadeInRight">
+                    <div class="flex-css">
+
+                        <div class="object-title">
+                            <span>Manage Meeting Type</span>
+                        </div>
+                        <div class="add-employee" *ngIf="canAddMeetingType">
+                            <button mat-icon-button (click)="addEmployee('Add Meeting Type','Meeting type')"
+                                class="container-button-color">
+                                <mat-icon class="material-icons">add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div aria-labelledby="v-pills-profile-tab">
+                        <ace-table-grid object-id="17cdf6290e724168a04ff525fc86661e"
+                            [columnMeta]="'visitor_type:Visitor type:STRING:true:false'" [sortBy]="'date_modified'"
+                            [pageSize]="'10'" hide-record-locator="true">
+                        </ace-table-grid>
+                    </div>
+                </div>
+            </ng-conatiner>
+            <ng-container *ngIf="isEmployee">
+                <div class="wow fadeInRight" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+                    <div class="flex-css">
+                        <div class="object-title left-container">
+                            <span>Employees</span>
+                        </div>
+                        <div class="add-employee" *ngIf="canAddEmployee">
+                            <button mat-icon-button (click)="addEmployee('Add Employee','employee')"
+                                class="container-button-color">
+                                <mat-icon class="material-icons">person_add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <ace-table-grid object-id="d833a62f32da4fbd92ec1a028da54b91" [columnMeta]="columnMeta"
+                            [sortBy]="'date_modified'" [pageSize]="'10'"
+                            (selectionChange)="tableSelectionChangeHandler($event)" hide-record-locator="true">
+                        </ace-table-grid>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isLeadContact">
+                <div class="wow fadeInRight" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+                    <div class="flex-css">
+                        <div class="object-title left-container">
+                            <span>Lead contact</span>
+                        </div>
+                    </div>
+                    <div>
+                        <ace-table-grid object-id="d98579c0ce254dfc905b5dccf033437c"
+                            [columnMeta]="leadContactColumnMeta" [sortBy]="'date_modified'" [pageSize]="'10'"
+                            hide-record-locator="true">
+                        </ace-table-grid>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
